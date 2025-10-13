@@ -83,6 +83,88 @@
       background-color: var(--hvit);
     }
 
+    /* Mobile menu toggle (hidden on desktop) */
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: 1px solid var(--beige);
+      color: var(--hvit);
+      padding: 0.35rem 0.6rem;
+      border-radius: 4px;
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+    .menu-toggle:hover,
+    .menu-toggle:focus-visible {
+      background: rgba(254, 235, 207, 0.08);
+      outline: none;
+      cursor: pointer;
+    }
+
+    /* Responsive layout */
+    @media (max-width: 768px) {
+      .hero-inner,
+      .divider,
+      .form-container {
+        width: 92%;
+      }
+
+      /* Make footer stack nicely on small screens */
+      .footer-wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.25rem;
+      }
+
+      /* Increase scroll offset for sticky navbar on small screens */
+      #pamelding {
+        scroll-margin-top: 120px;
+      }
+
+      /* Navbar: show hamburger, collapse links */
+      .menu-toggle {
+        display: inline-block;
+      }
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        background: var(--rod);
+        border-bottom: 2px solid var(--beige);
+        flex-direction: column;
+        gap: 1rem;
+        padding: 0.75rem 5vw 1rem;
+        display: none; /* collapsed by default on mobile */
+        z-index: 999;
+      }
+      .nav-links.open {
+        display: flex; /* show when toggled */
+      }
+
+      /* On mobile, place the overlay content below the image */
+      .hero-overlay {
+        position: static;
+        left: auto;
+        bottom: auto;
+        width: 100%;
+        max-width: 100%;
+        margin-top: 0.75rem;
+      }
+    }
+
+    /* Tablet breakpoint: also place overlay below the image on slightly larger screens */
+    @media (max-width: 1024px) {
+      .hero-overlay {
+        position: static;
+        left: auto;
+        bottom: auto;
+        width: 100%;
+        max-width: 100%;
+        margin-top: 0.75rem;
+      }
+    }
+
     /* Hero image with overlay */
     .hero {
       display: flex;
@@ -228,6 +310,31 @@
     .cta-btn:hover {
       text-decoration: underline;
     }
+    /* --- Responsive fixes (appended after base rules to win cascade) --- */
+    @media (max-width: 1024px) {
+      /* Place overlay below image on tablet & mobile */
+      .hero-overlay {
+        position: static !important;
+        left: auto !important;
+        bottom: auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-top: 0.75rem !important;
+      }
+    }
+    @media (max-width: 768px) {
+      /* Center footer columns and constrain width on mobile */
+      .footer-wrapper {
+        justify-content: center;
+      }
+      .footer-section {
+        flex: 0 1 auto;
+        width: 100%;
+        max-width: 92%;
+        margin: 0 auto;
+        align-items: center;
+      }
+    }
   </style>
 </head>
 <body>
@@ -235,7 +342,8 @@
   <!-- Navbar -->
   <nav class="navbar">
     <a href="index.html" class="logo">Jul på tunet</a>
-    <div class="nav-links">
+    <button class="menu-toggle" aria-label="Åpne meny" aria-expanded="false" aria-controls="mobile-menu">☰</button>
+    <div class="nav-links" id="mobile-menu">
       <a href="#pamelding" class="active">Påmelding</a>
       <a>Program</a>
       <a>Områdekart</a>
@@ -292,4 +400,34 @@
   </footer>
 
 </body>
+<script>
+  (function() {
+    const btn = document.querySelector('.menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    if (!btn || !menu) return;
+
+    function closeMenuOnDesktop() {
+      if (window.matchMedia('(min-width: 769px)').matches) {
+        menu.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    }
+
+    btn.addEventListener('click', function() {
+      const isOpen = menu.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    // Close the menu after clicking the active link (smooth scroll)
+    const activeLink = menu.querySelector('a[href^="#"]');
+    if (activeLink) {
+      activeLink.addEventListener('click', () => {
+        menu.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    window.addEventListener('resize', closeMenuOnDesktop);
+  })();
+</script>
 </html>
