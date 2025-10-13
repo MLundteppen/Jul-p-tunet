@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
   <style>
+    
     :root {
       --rod: #9b3015;
       --hvit: #feebcf;
@@ -15,10 +16,8 @@
       --gronn: #5f5d3b;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
+    
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: 'Crimson Text', serif;
@@ -26,7 +25,7 @@
       color: var(--gronn);
     }
 
-    /* Navbar */
+    
     .navbar {
       position: sticky;
       top: 0;
@@ -41,23 +40,14 @@
       z-index: 1000;
       border-bottom: 3px solid var(--beige);
     }
-
     .logo {
       font-size: 1.5rem;
       font-weight: italic;
       color: var(--hvit);
       text-decoration: none;
     }
-
-    .logo:hover {
-      text-decoration: underline;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-    }
-
+    .logo:hover { text-decoration: underline; }
+    .nav-links { display: flex; gap: 1.5rem; }
     .nav-links a {
       color: var(--beige);
       text-decoration: none;
@@ -66,13 +56,11 @@
       position: relative;
       font-weight: 500;
     }
-
     .nav-links a.active {
       opacity: 1;
       cursor: pointer;
       color: var(--hvit);
     }
-
     .nav-links a.active:hover::after {
       content: "";
       position: absolute;
@@ -82,8 +70,7 @@
       height: 2px;
       background-color: var(--hvit);
     }
-
-    /* Mobile menu toggle (hidden on desktop) */
+    
     .menu-toggle {
       display: none;
       background: transparent;
@@ -100,81 +87,9 @@
       outline: none;
       cursor: pointer;
     }
-
-    /* Responsive layout */
-    @media (max-width: 768px) {
-      .hero-inner,
-      .divider,
-      .form-container {
-        width: 92%;
-      }
-
-      /* Make footer stack nicely on small screens */
-      .footer-wrapper {
-        flex-direction: column;
-        align-items: center;
-        gap: 1.25rem;
-      }
-
-      /* Increase scroll offset for sticky navbar on small screens */
-      #pamelding {
-        scroll-margin-top: 120px;
-      }
-
-      /* Navbar: show hamburger, collapse links */
-      .menu-toggle {
-        display: inline-block;
-      }
-      .nav-links {
-        position: absolute;
-        top: 100%;
-        right: 0;
-        left: 0;
-        background: var(--rod);
-        border-bottom: 2px solid var(--beige);
-        flex-direction: column;
-        gap: 1rem;
-        padding: 0.75rem 5vw 1rem;
-        display: none; /* collapsed by default on mobile */
-        z-index: 999;
-      }
-      .nav-links.open {
-        display: flex; /* show when toggled */
-      }
-
-      /* On mobile, place the overlay content below the image */
-      .hero-overlay {
-        position: static;
-        left: auto;
-        bottom: auto;
-        width: 100%;
-        max-width: 100%;
-        margin-top: 0.75rem;
-      }
-    }
-
-    /* Tablet breakpoint: also place overlay below the image on slightly larger screens */
-    @media (max-width: 1024px) {
-      .hero-overlay {
-        position: static;
-        left: auto;
-        bottom: auto;
-        width: 100%;
-        max-width: 100%;
-        margin-top: 0.75rem;
-      }
-    }
-
-    /* Hero image with overlay */
-    .hero {
-      display: flex;
-      justify-content: center;
-      padding: 2rem 0;
-    }
-    .hero-inner {
-      position: relative;
-      width: 70%;
-    }
+    
+    .hero { display: flex; justify-content: center; padding: 2rem 0; }
+    .hero-inner { position: relative; width: 70%; }
     .hero-inner img {
       width: 100%;
       height: auto;
@@ -190,7 +105,9 @@
       padding: clamp(12px, 2vw, 20px);
       border-radius: clamp(6px, 1vw, 14px);
       box-shadow: 0 6px 20px rgba(0,0,0,.15);
-      max-width: min(90%, 700px);
+      
+      box-sizing: border-box;
+      max-width: min(700px, calc(100% - (2 * clamp(12px, 2vw, 24px))));
       text-align: left;
     }
     .hero-overlay h1 {
@@ -207,23 +124,16 @@
       font-size: clamp(1rem, 1.2vw, 1.1rem);
       padding: 0.9rem 1.6rem;
     }
-
-    /* Divider and form container */
-    #pamelding {
-      scroll-margin-top: 100px; /* offset for sticky navbar */
-    }
+    
+    #pamelding { scroll-margin-top: 100px; }
     .divider {
       width: 70%;
       margin: 1.5rem auto 2rem;
       border: 0;
       border-top: 5px solid var(--rod);
     }
-    .form-container {
-      width: 70%;
-      margin: 0 auto 3rem;
-    }
-
-    /* Footer */
+    .form-container { width: 70%; margin: 0 auto 3rem; }
+    
     footer {
       background-color: var(--rod);
       color: var(--beige);
@@ -234,7 +144,6 @@
       align-items: flex-start;
       gap: 2rem;
     }
-
     .footer-wrapper {
       display: flex;
       justify-content: space-between;
@@ -243,7 +152,6 @@
       max-width: 1200px;
       margin: 0 auto;
     }
-
     .footer-section {
       flex: 1;
       min-width: 200px;
@@ -255,17 +163,14 @@
       padding: 0 1rem 1.25rem;
       font-size: clamp(1.05rem, 1.4vw, 1.15rem);
     }
-
     .footer-section h4 {
       margin-bottom: 0.25rem;
       font-size: clamp(1.3rem, 2.3vw, 1.7rem);
     }
-
     .footer-section p {
       margin: 0.1rem 0;
       line-height: 1.25;
     }
-
     .footer-nav {
       display: flex;
       flex-direction: column;
@@ -273,31 +178,25 @@
       align-items: center;
       text-align: center;
     }
-    .footer-nav a {
-      color: var(--beige);
-      text-decoration: none;
-    }
-    .footer-nav a:hover {
-      text-decoration: underline;
-    }
-    .disabled-link {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-
-    footer a {
-      color: var(--beige);
-      text-decoration: none;
-    }
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    .content {
-      padding: 4rem 2rem;
+    .footer-nav a { color: var(--beige); text-decoration: none; }
+    .footer-nav a:hover { text-decoration: underline; }
+    .disabled-link { opacity: 0.5; cursor: not-allowed; }
+    footer a { color: var(--beige); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    .footer-copy a { text-decoration: underline; }
+    .footer-copy a:hover, .footer-copy a:focus { text-decoration: underline; }
+    .footer-copy {
+      width: 100%;
       text-align: center;
+      color: var(--beige);
+      font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+      margin-top: 0.5rem;
+      padding-top: 0.5rem;
     }
 
+
+
+    .content { padding: 4rem 2rem; text-align: center; }
     .cta-btn {
       display: inline-block;
       margin-top: 2rem;
@@ -307,25 +206,28 @@
       text-decoration: none;
       border-radius: 4px;
     }
-    .cta-btn:hover {
-      text-decoration: underline;
-    }
-    /* --- Responsive fixes (appended after base rules to win cascade) --- */
+    .cta-btn:hover { text-decoration: underline; }
+
     @media (max-width: 1024px) {
-      /* Place overlay below image on tablet & mobile */
+
       .hero-overlay {
         position: static !important;
         left: auto !important;
         bottom: auto !important;
         width: 100% !important;
         max-width: 100% !important;
+        box-sizing: border-box !important;
         margin-top: 0.75rem !important;
       }
     }
     @media (max-width: 768px) {
-      /* Center footer columns and constrain width on mobile */
+      .hero-inner, .divider, .form-container { width: 92%; }
+
       .footer-wrapper {
+        flex-direction: column;
         justify-content: center;
+        align-items: center;
+        gap: 1.25rem;
       }
       .footer-section {
         flex: 0 1 auto;
@@ -334,12 +236,63 @@
         margin: 0 auto;
         align-items: center;
       }
+
+      #pamelding { scroll-margin-top: 120px; }
+
+      .menu-toggle { display: inline-block; }
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        background: var(--rod);
+        border-bottom: 2px solid var(--beige);
+        display: block;
+        overflow: hidden;
+        z-index: 999;
+        
+        max-height: 0;
+        opacity: 0;
+        transform: translateY(-6px);
+        visibility: hidden;
+        pointer-events: none;
+        
+        padding: 0 5vw 0;
+        
+        transition:
+          max-height 320ms ease-in-out,
+          opacity 220ms ease-in-out,
+          transform 260ms ease-in-out,
+          padding-top 220ms ease-in-out,
+          padding-bottom 240ms ease-in-out;
+      }
+      .nav-links.open {
+        
+        max-height: 60vh;                /* sufficiently large for list */
+        opacity: 1;
+        transform: translateY(0);
+        visibility: visible;
+        pointer-events: auto;
+        padding: 0.75rem 5vw 1rem;       /* restore vertical padding */
+      }
+      
+      .nav-links a {
+        display: block;
+        margin: 0.25rem 0;
+      }
+    }
+    
+
+    @media (prefers-reduced-motion: reduce) {
+      .nav-links {
+        transition: none;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navbar -->
+  
   <nav class="navbar">
     <a href="index.html" class="logo">Jul på tunet</a>
     <button class="menu-toggle" aria-label="Åpne meny" aria-expanded="false" aria-controls="mobile-menu">☰</button>
@@ -351,9 +304,9 @@
       <a>Liste over utstillere</a>
     </div>
   </nav>
+  
 
-
-  <!-- Hero-seksjon med overlegg -->
+  
   <section class="hero">
     <div class="hero-inner">
       <img src="https://image.saltenposten.no/468242.webp?imageId=468242&x=0.00&y=31.71&cropw=100.00&croph=57.04&width=2116&height=1208&format=webp" alt="Jul på tunet – bilde" />
@@ -364,7 +317,9 @@
       </div>
     </div>
   </section>
+  
 
+  
   <hr class="divider">
   <section id="pamelding" class="form-container" aria-label="Påmelding">
     <iframe data-tally-src="https://tally.so/embed/medZXQ?transparentBackground=1&dynamicHeight=1"
@@ -374,8 +329,9 @@
       var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}
     </script>
   </section>
+  
 
-  <!-- Footer -->
+  
   <footer>
     <div class="footer-wrapper">
       <div class="footer-section">
@@ -390,44 +346,52 @@
       </div>
       <div class="footer-section">
         <h4>Kontakt</h4>
-        <p>E-post: <a href="mailto:post@julpatunet.no">post@julpatunet.no</a></p>
+        <p>E-post: <a href="mailto:HegeRuud@heges.no">HegeRuud@heges.no</a></p>
       </div>
       <div class="footer-section">
         <h4>Adresse</h4>
         <p><a href="https://maps.app.goo.gl/TaiQD6HuTs85rN6S9" target="_blank" rel="noopener">Fauske bygdetun<br>8200 Fauske</a></p>
       </div>
     </div>
+    <div class="footer-copy">© <a href="https://lundteppen.media" target="_blank" rel="noopener">Lundteppen Media</a></div>
   </footer>
+  
+
+  
+  <script>
+    (function() {
+      const btn = document.querySelector('.menu-toggle');
+      const menu = document.getElementById('mobile-menu');
+      if (!btn || !menu) return;
+
+      function closeMenuOnDesktop() {
+        if (window.matchMedia('(min-width: 769px)').matches) {
+          menu.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+          btn.setAttribute('aria-label', 'Åpne meny');
+        }
+      }
+
+      btn.addEventListener('click', function() {
+        const isOpen = menu.classList.toggle('open');
+        btn.setAttribute('aria-expanded', String(isOpen));
+        btn.setAttribute('aria-label', isOpen ? 'Lukk meny' : 'Åpne meny');
+      });
+
+      
+      const activeLink = menu.querySelector('a[href^="#"]');
+      if (activeLink) {
+        activeLink.addEventListener('click', () => {
+          menu.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+          btn.setAttribute('aria-label', 'Åpne meny');
+        });
+      }
+
+      window.addEventListener('resize', closeMenuOnDesktop);
+    })();
+  </script>
+  
 
 </body>
-<script>
-  (function() {
-    const btn = document.querySelector('.menu-toggle');
-    const menu = document.getElementById('mobile-menu');
-    if (!btn || !menu) return;
-
-    function closeMenuOnDesktop() {
-      if (window.matchMedia('(min-width: 769px)').matches) {
-        menu.classList.remove('open');
-        btn.setAttribute('aria-expanded', 'false');
-      }
-    }
-
-    btn.addEventListener('click', function() {
-      const isOpen = menu.classList.toggle('open');
-      btn.setAttribute('aria-expanded', String(isOpen));
-    });
-
-    // Close the menu after clicking the active link (smooth scroll)
-    const activeLink = menu.querySelector('a[href^="#"]');
-    if (activeLink) {
-      activeLink.addEventListener('click', () => {
-        menu.classList.remove('open');
-        btn.setAttribute('aria-expanded', 'false');
-      });
-    }
-
-    window.addEventListener('resize', closeMenuOnDesktop);
-  })();
-</script>
 </html>
