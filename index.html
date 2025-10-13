@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jul på tunet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --rod: #9b3015;
+      --hvit: #feebcf;
+      --beige: #f2d5a1;
+      --gronn: #5f5d3b;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Crimson Text', serif;
+      background-color: var(--hvit);
+      color: var(--gronn);
+    }
+
+    /* Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background-color: var(--rod);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5vw;
+      box-sizing: border-box;
+      max-width: 100%;
+      z-index: 1000;
+      border-bottom: 3px solid var(--beige);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: italic;
+      color: var(--hvit);
+      text-decoration: none;
+    }
+
+    .logo:hover {
+      text-decoration: underline;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      color: var(--beige);
+      text-decoration: none;
+      cursor: not-allowed;
+      opacity: 0.5;
+      position: relative;
+      font-weight: 500;
+    }
+
+    .nav-links a.active {
+      opacity: 1;
+      cursor: pointer;
+      color: var(--hvit);
+    }
+
+    .nav-links a.active:hover::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--hvit);
+    }
+
+    /* Hero image with overlay */
+    .hero {
+      display: flex;
+      justify-content: center;
+      padding: 2rem 0;
+    }
+    .hero-inner {
+      position: relative;
+      width: 70%;
+    }
+    .hero-inner img {
+      width: 100%;
+      height: auto;
+      border-radius: clamp(8px, 1.5vw, 24px);
+      display: block;
+    }
+    .hero-overlay {
+      position: absolute;
+      left: clamp(12px, 2vw, 24px);
+      bottom: clamp(12px, 2vw, 24px);
+      background-color: var(--hvit);
+      color: var(--gronn);
+      padding: clamp(12px, 2vw, 20px);
+      border-radius: clamp(6px, 1vw, 14px);
+      box-shadow: 0 6px 20px rgba(0,0,0,.15);
+      max-width: min(90%, 700px);
+      text-align: left;
+    }
+    .hero-overlay h1 {
+      margin: 0 0 0.5rem;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      line-height: 1.1;
+    }
+    .hero-overlay p {
+      margin: 0 0 1rem;
+      font-size: clamp(1rem, 1.6vw, 1.25rem);
+      line-height: 1.35;
+    }
+    .hero-overlay .cta-btn {
+      font-size: clamp(1rem, 1.2vw, 1.1rem);
+      padding: 0.9rem 1.6rem;
+    }
+
+    /* Divider and form container */
+    #pamelding {
+      scroll-margin-top: 100px; /* offset for sticky navbar */
+    }
+    .divider {
+      width: 70%;
+      margin: 1.5rem auto 2rem;
+      border: 0;
+      border-top: 5px solid var(--rod);
+    }
+    .form-container {
+      width: 70%;
+      margin: 0 auto 3rem;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--rod);
+      color: var(--beige);
+      display: flex;
+      justify-content: center;
+      padding: 2rem;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+
+    .footer-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 200px;
+      margin: 0 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      text-align: center;
+      padding: 0 1rem 1.25rem;
+      font-size: clamp(1.05rem, 1.4vw, 1.15rem);
+    }
+
+    .footer-section h4 {
+      margin-bottom: 0.25rem;
+      font-size: clamp(1.3rem, 2.3vw, 1.7rem);
+    }
+
+    .footer-section p {
+      margin: 0.1rem 0;
+      line-height: 1.25;
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      align-items: center;
+      text-align: center;
+    }
+    .footer-nav a {
+      color: var(--beige);
+      text-decoration: none;
+    }
+    .footer-nav a:hover {
+      text-decoration: underline;
+    }
+    .disabled-link {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    footer a {
+      color: var(--beige);
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .content {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--rod);
+      color: var(--hvit);
+      text-decoration: none;
+      border-radius: 4px;
+    }
+    .cta-btn:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">Jul på tunet</a>
+    <div class="nav-links">
+      <a href="#pamelding" class="active">Påmelding</a>
+      <a>Program</a>
+      <a>Områdekart</a>
+      <a>Praktisk info</a>
+      <a>Liste over utstillere</a>
+    </div>
+  </nav>
+
+
+  <!-- Hero-seksjon med overlegg -->
+  <section class="hero">
+    <div class="hero-inner">
+      <img src="https://image.saltenposten.no/468242.webp?imageId=468242&x=0.00&y=31.71&cropw=100.00&croph=57.04&width=2116&height=1208&format=webp" alt="Jul på tunet – bilde" />
+      <div class="hero-overlay">
+        <h1>Jul på tunet | 13. - 14. desember</h1>
+        <p>Har du noe du vil gjøre eller selge?<br>Fyll ut skjemaet under.</p>
+        <a href="#pamelding" class="cta-btn">Gå til påmelding</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+  <section id="pamelding" class="form-container" aria-label="Påmelding">
+    <iframe data-tally-src="https://tally.so/embed/medZXQ?transparentBackground=1&dynamicHeight=1"
+            loading="lazy" width="100%" height="611" frameborder="0" marginheight="0" marginwidth="0"
+            title="Fyll ut for å melde "></iframe>
+    <script>
+      var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}
+    </script>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-wrapper">
+      <div class="footer-section">
+        <h4>Lenker</h4>
+        <nav class="footer-nav" aria-label="Bunnmeny">
+          <a href="#pamelding">Påmelding</a>
+          <span class="disabled-link">Program</span>
+          <span class="disabled-link">Områdekart</span>
+          <span class="disabled-link">Praktisk info</span>
+          <span class="disabled-link">Liste over utstillere</span>
+        </nav>
+      </div>
+      <div class="footer-section">
+        <h4>Kontakt</h4>
+        <p>E-post: <a href="mailto:post@julpatunet.no">post@julpatunet.no</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Adresse</h4>
+        <p><a href="https://maps.app.goo.gl/TaiQD6HuTs85rN6S9" target="_blank" rel="noopener">Fauske bygdetun<br>8200 Fauske</a></p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
