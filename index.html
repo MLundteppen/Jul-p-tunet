@@ -3,17 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Jul på tunet - Årets koseligste idé?</title>
+  <title>Jul på Tunet</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=4" sizes="any">
   <style>
     
     :root {
-      --rod: #9b3015;
+      --rod: #a72922;
       --hvit: #feebcf;
       --beige: #f2d5a1;
       --gronn: #5f5d3b;
+      --nav-h-desktop: 72px;
+      --nav-h-mobile: 56px;
     }
 
     
@@ -25,6 +28,9 @@
       color: var(--gronn);
     }
 
+    a { color: inherit; text-decoration: underline; }
+    a:hover, a:focus { text-decoration: underline; }
+
     
     .navbar {
       position: sticky;
@@ -34,19 +40,25 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 5vw;
+      padding: 0 5vw;
+      height: var(--nav-h-desktop);
       box-sizing: border-box;
       max-width: 100%;
       z-index: 1000;
       border-bottom: 3px solid var(--beige);
+      overflow: visible;
     }
-    .logo {
-      font-size: 1.5rem;
-      font-weight: italic;
-      color: var(--hvit);
-      text-decoration: none;
+    .logo { display: flex; align-items: center; height: 100%; text-decoration: none; line-height: 0; position: relative; }
+    .logo img {
+      display: block;
+      height: calc(100% - 3px);
+      width: auto;
+      transform: none;
+      padding: 0;
+      border: 0;
+      border-radius: 10px;
+      background: transparent;
     }
-    .logo:hover { text-decoration: underline; }
     .nav-links { display: flex; gap: 1.5rem; }
     .nav-links a {
       color: var(--beige);
@@ -96,10 +108,17 @@
       border-radius: clamp(8px, 1.5vw, 24px);
       display: block;
     }
+    .hero-credit {
+      width: 100%;
+      text-align: right;
+      font-size: clamp(0.75rem, 1.4vw, 0.95rem);
+      color: rgba(95, 93, 59, 0.85);
+      margin-top: 0.35rem;
+    }
     .hero-overlay {
       position: absolute;
       left: clamp(12px, 2vw, 24px);
-      bottom: clamp(12px, 2vw, 24px);
+      bottom: clamp(16px, 2.5vw, 32px);
       background-color: var(--hvit);
       color: var(--gronn);
       padding: clamp(12px, 2vw, 20px);
@@ -126,6 +145,7 @@
     }
     
     #pamelding { scroll-margin-top: 100px; }
+    #praktisk-info { scroll-margin-top: 100px; }
     .divider {
       width: 70%;
       margin: 1.5rem auto 2rem;
@@ -133,6 +153,31 @@
       border-top: 5px solid var(--rod);
     }
     .form-container { width: 70%; margin: 0 auto 3rem; }
+    .info-container { width: 70%; margin: 0 auto 3rem; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .info-item { background-color: var(--hvit); color: var(--gronn); border: 1px solid rgba(0,0,0,0.06); border-radius: 10px; padding: 1rem 1.25rem; }
+    .info-item h2, .info-item h3 { margin: 0 0 0.25rem; font-size: clamp(1.25rem, 2vw, 1.5rem); }
+    .info-item p, .info-item ul { margin: 0.25rem 0 0; line-height: 1.35; }
+    .info-item ul { padding-left: 1.1rem; }
+    .info-container > h2 { margin: 0 0 1rem; font-size: clamp(1.6rem, 3vw, 2rem); text-align: center; }
+
+    .partners-container { width: 80%; margin: 0 auto 3rem; }
+    .partners-container > h2 { margin: 0 0 1rem; font-size: clamp(1.6rem, 3vw, 2rem); text-align: center; }
+    .partners-logos {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(120px, 1fr));
+      align-items: center;
+      gap: 1rem;
+      padding-top: 0.5rem;
+    }
+    .partners-logos img {
+      display: block;
+      max-width: 100%;
+      max-height: 72px;
+      height: auto;
+      margin: 0 auto;
+      object-fit: contain;
+    }
     
     footer {
       background-color: var(--rod);
@@ -178,10 +223,10 @@
       align-items: center;
       text-align: center;
     }
-    .footer-nav a { color: var(--beige); text-decoration: none; }
+    .footer-nav a { color: inherit; text-decoration: underline; }
     .footer-nav a:hover { text-decoration: underline; }
     .disabled-link { opacity: 0.5; cursor: not-allowed; }
-    footer a { color: var(--beige); text-decoration: none; }
+    footer a { color: inherit; text-decoration: underline; }
     footer a:hover { text-decoration: underline; }
     .footer-copy a { text-decoration: underline; }
     .footer-copy a:hover, .footer-copy a:focus { text-decoration: underline; }
@@ -208,7 +253,7 @@
     }
     .cta-btn:hover { text-decoration: underline; }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 900px) {
 
       .hero-overlay {
         position: static !important;
@@ -220,8 +265,20 @@
         margin-top: 0.75rem !important;
       }
     }
+
+    @media (min-width: 1024px) {
+      .partners-logos { grid-template-columns: repeat(5, minmax(120px, 1fr)); }
+      .logo { align-items: flex-start; }
+      .logo img { height: calc(200% - 6px); }
+    }
     @media (max-width: 768px) {
       .hero-inner, .divider, .form-container { width: 92%; }
+      .info-container { width: 92%; }
+      .partners-container { width: 92%; }
+      .info-grid { grid-template-columns: 1fr; }
+      .partners-logos { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .partners-logos img { max-height: 56px; }
+      #praktisk-info { scroll-margin-top: 120px; }
 
       .footer-wrapper {
         flex-direction: column;
@@ -268,18 +325,20 @@
       }
       .nav-links.open {
         
-        max-height: 60vh;                /* sufficiently large for list */
+        max-height: 60vh;               
         opacity: 1;
         transform: translateY(0);
         visibility: visible;
         pointer-events: auto;
-        padding: 0.75rem 5vw 1rem;       /* restore vertical padding */
+        padding: 0.75rem 5vw 1rem;      
       }
       
       .nav-links a {
         display: block;
         margin: 0.25rem 0;
       }
+      .navbar { height: var(--nav-h-mobile); }
+      .logo img { height: calc(100% - 3px); transform: none; padding: 0; border: 0; }
     }
     
 
@@ -290,28 +349,30 @@
     }
   </style>
 </head>
-<body>
+<body id="top">
 
-  
+  <!--NavBaren-->
+
   <nav class="navbar">
-    <a href="index.html" class="logo">Jul på tunet</a>
+    <a href="#top" class="logo" aria-label="Jul på Tunet — til toppen"><img src="favicon.svg" alt="Jul på Tunet logo"></a>
     <button class="menu-toggle" aria-label="Åpne meny" aria-expanded="false" aria-controls="mobile-menu">☰</button>
     <div class="nav-links" id="mobile-menu">
       <a href="#pamelding" class="active">Påmelding</a>
       <a>Program</a>
       <a>Områdekart</a>
-      <a>Praktisk info</a>
+      <a href="#praktisk-info" class="active">Praktisk info</a>
       <a>Liste over utstillere</a>
     </div>
   </nav>
-  
 
-  
+  <!--Hero Image-->
+
   <section class="hero">
     <div class="hero-inner">
       <img src="https://image.saltenposten.no/468242.webp?imageId=468242&x=0.00&y=31.71&cropw=100.00&croph=57.04&width=2116&height=1208&format=webp" alt="Jul på tunet – bilde" />
+      <div class="hero-credit">Illustrasjonsbilde / AI-generert</div>
       <div class="hero-overlay">
-        <h1>Jul på tunet | 13. - 14. desember 2025</h1>
+        <h1>Jul på Tunet | 13. - 14. desember 2025</h1>
         <p>I fantastiske omgivelser arrangerer Salten Matfestival «Jul på Tunet». Arrangementet strekker seg over to dager i ett av Fauske sentrums flotteste områder – Bygdetunet og Teletunet. «Jul på Tunet» er et inkluderende julemarked med hovedfokus på lokalmat, håndverk, kunst og kultur, og skal sørge for den gode julestemningen i førjulstida.</p>
         <p>Ønsker du å være med på å skape årets koseligste julemarked?</p>
         <a href="#pamelding" class="cta-btn">Gå til påmelding</a>
@@ -319,7 +380,7 @@
     </div>
   </section>
   
-
+<!--Påmelding-->
   
   <hr class="divider">
   <section id="pamelding" class="form-container" aria-label="Påmelding">
@@ -331,8 +392,47 @@
     </script>
   </section>
   
-
+<!--Praktisk info-->
   
+  <hr class="divider">
+  <section id="praktisk-info" class="info-container" aria-label="Praktisk info">
+    <h2>Praktisk info</h2>
+    <div class="info-grid">
+      <div class="info-item">
+        <h3>Tid og sted</h3>
+        <p>13. - 14. desember 2025 · Fauske bygdetun & Teletunet</p>
+      </div>
+      <div class="info-item">
+        <h3>Påmelding</h3>
+        <p>Alle som ønsker å stille under Jul på Tunet <strong>må</strong> bruke <a href="#pamelding">skjemaet</a> over.</p>
+      </div>
+    </div>
+  </section>
+  
+  <hr class="divider">
+  <section id="samarbeidspartnere" class="partners-container" aria-label="Samarbeidspartnere">
+    <h2>Samarbeidspartnere</h2>
+    <div class="partners-logos">
+      <a href="https://www.facebook.com/saltenmatfestival/?locale=nb_NO" target="_blank" rel="noopener" aria-label="Salten Matfestival (åpner i ny fane)">
+        <img src="saltenmat.png" alt="Salten Matfestival – logo" loading="lazy" decoding="async">
+      </a>
+      <a href="https://www.fauske.kommune.no/" target="_blank" rel="noopener" aria-label="Fauske kommune (åpner i ny fane)">
+        <img src="FK_Primær_Logo.png" alt="Fauske kommune – logo" loading="lazy" decoding="async">
+      </a>
+      <a href="https://www.faunakf.no/" target="_blank" rel="noopener" aria-label="Fauna KF (åpner i ny fane)">
+        <img src="fauna.png" alt="Fauna KF – logo" loading="lazy" decoding="async">
+      </a>
+      <a href="https://www.nordlandsmuseet.no/fauske-bygdetun" target="_blank" rel="noopener" aria-label="Nordlandsmuseet – Fauske bygdetun (åpner i ny fane)">
+        <img src="Logo_Nordlandsmuseet.png" alt="Nordlandsmuseet – logo" loading="lazy" decoding="async">
+      </a>
+      <a href="https://www.lhl.no/lokallag/lhl-nordland/lhl-fauske/" target="_blank" rel="noopener" aria-label="LHL Fauske (åpner i ny fane)">
+        <img src="lhl-logo.svg" alt="LHL Fauske – logo" loading="lazy" decoding="async">
+      </a>
+    </div>
+  </section>
+  
+  <!--Footer-->
+
   <footer>
     <div class="footer-wrapper">
       <div class="footer-section">
@@ -341,7 +441,7 @@
           <a href="#pamelding">Påmelding</a>
           <span class="disabled-link">Program</span>
           <span class="disabled-link">Områdekart</span>
-          <span class="disabled-link">Praktisk info</span>
+          <a href="#praktisk-info">Praktisk info</a>
           <span class="disabled-link">Liste over utstillere</span>
         </nav>
       </div>
@@ -354,10 +454,10 @@
         <p><a href="https://maps.app.goo.gl/TaiQD6HuTs85rN6S9" target="_blank" rel="noopener">Fauske bygdetun<br>8200 Fauske</a></p>
       </div>
     </div>
-    <div class="footer-copy">© <a href="https://lundteppen.media" target="_blank" rel="noopener">Lundteppen Media</a></div>
+    <div class="footer-copy">© Lundteppen Media</div>
   </footer>
   
-
+  <!--Script-->
   
   <script>
     (function() {
@@ -392,7 +492,5 @@
       window.addEventListener('resize', closeMenuOnDesktop);
     })();
   </script>
-  
-
 </body>
 </html>
