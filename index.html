@@ -180,11 +180,17 @@
     .partners-container { width: 80%; margin: 0 auto 3rem; }
     .partners-container > h2 { margin: 0 0 1rem; font-size: clamp(1.6rem, 3vw, 2rem); text-align: center; }
     .partners-logos {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(120px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       align-items: center;
       gap: 1rem;
       padding-top: 0.5rem;
+    }
+    /* default/fallback basis */
+    .partners-logos > a,
+    .partners-logos > img {
+      flex: 0 1 160px;
     }
     .partners-logos img {
       display: block;
@@ -283,7 +289,10 @@
     }
 
     @media (min-width: 1024px) {
-      .partners-logos { grid-template-columns: repeat(8, minmax(120px, 1fr)); }
+      .partners-logos > a,
+      .partners-logos > img {
+        flex-basis: calc((100% - (5 * 1rem)) / 6);
+      }
       .logo { align-items: flex-start; }
       .logo img { height: calc(200% - 6px); }
     }
@@ -299,7 +308,9 @@
       .timeline-item .tick { display: none; }
       .partners-container { width: 92%; }
       .info-grid { grid-template-columns: 1fr; }
-      .partners-logos { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .partners-logos { justify-content: center; gap: 1rem; }
+      .partners-logos > a,
+      .partners-logos > img { flex-basis: calc((100% - 1rem) / 2); }
       .partners-logos img { max-height: 56px; }
       #praktisk-info { scroll-margin-top: 120px; }
 
@@ -368,6 +379,10 @@
     @media (min-width: 769px) and (max-width: 1023px) {
       .logo { align-items: flex-start; }
       .logo img { height: calc(200% - 6px); }
+      .partners-logos > a,
+      .partners-logos > img {
+        flex-basis: calc((100% - (3 * 1rem)) / 4);
+      }
     }
     
 
@@ -521,6 +536,9 @@
       <a href="https://fauskebygg.no/" target="_blank" rel="noopener" aria-label="Fauskebygg (åpner i ny fane)">
         <img src="Logo_Fauskebygg.png" alt="Fauskebygg – logo" loading="lazy" decoding="async">
       </a>
+      <a href="https://www.visitfauske.no/" target="_blank" rel="noopener" aria-label="Visit Fauske (åpner i ny fane)">
+        <img src="Visit Fauske_black_pos.png" alt="Visit Fauske – logo" loading="lazy" decoding="async">
+      </a>
     </div>
   </section>
   
@@ -531,7 +549,7 @@
       <div class="footer-section">
         <h4>Lenker</h4>
         <nav class="footer-nav" aria-label="Bunnmeny">
-          <a href="#pamelding">Påmelding</a>
+          <span class="disabled-link">Påmelding</span>
           <a href="#program">Program</a>
           <span class="disabled-link">Områdekart</span>
           <a href="#praktisk-info">Praktisk info</a>
