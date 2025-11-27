@@ -160,6 +160,15 @@
     #program { scroll-margin-top: 100px; }
     .program-container { width: 70%; margin: 0 auto 3rem; }
     .program-container > h2 { margin: 0 0 1rem; font-size: clamp(1.6rem, 3vw, 2rem); text-align: center; }
+    /* Områdekart section */
+    #omradekart { scroll-margin-top: 100px; }
+    .map-container { width: 70%; margin: 0 auto 3rem; }
+    .map-container > h2 { margin: 0 0 1rem; font-size: clamp(1.6rem, 3vw, 2rem); text-align: center; }
+    .map-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
     .day-block { margin-bottom: 2rem; }
     .day-block h3 { margin: 0 0 0.5rem; font-size: clamp(1.2rem, 2vw, 1.4rem); }
     .timeline { position: relative; padding: 1.25rem 0 1rem; }
@@ -177,6 +186,41 @@
     .info-item ul { padding-left: 1.1rem; }
     .info-container > h2 { margin: 0 0 1rem; font-size: clamp(1.6rem, 3vw, 2rem); text-align: center; }
 
+     #utstillere { scroll-margin-top: 100px; }
+    .exhibitors-container { width: 70%; margin: 0 auto 3rem; }
+    .exhibitors-container > h2 { margin: 0 0 1rem; font-size: clamp(1.6rem, 3vw, 2rem); text-align: center; }
+    .exhibitors-grid { display: flex; gap: 1.25rem; align-items: flex-start; }
+    .exhibitor-col { flex: 1 1 0; min-width: 280px; }
+    .exhibitor-col h3 {
+      margin: 0 0 0.5rem;
+      font-size: clamp(1.2rem, 2vw, 1.4rem);
+      text-align: center;
+    }
+    .exhibitor-list { list-style: none; padding-left: 0; margin: 0; display: grid; gap: 0.5rem; }
+    .exhibitor-list li {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.35rem 0.5rem;
+      background-color: var(--hvit);
+      color: var(--gronn);
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 10px;
+      padding: 0.5rem 0.75rem;
+    }
+    .exhibitor-list .name { font-weight: 700; }
+    .exhibitor-list .desc { opacity: 0.9; }
+    .exhibitor-list .num {
+      font-weight: 700;
+      color: var(--rod);
+      min-width: 2ch;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+    .exhibitor-list .sep {
+      opacity: 0.7;
+    }
+
     .partners-container { width: 80%; margin: 0 auto 3rem; }
     .partners-container > h2 { margin: 0 0 1rem; font-size: clamp(1.6rem, 3vw, 2rem); text-align: center; }
     .partners-logos {
@@ -187,7 +231,9 @@
       gap: 1rem;
       padding-top: 0.5rem;
     }
-    /* default/fallback basis */
+
+    .partners-logos > a { padding-block: 10px; }
+
     .partners-logos > a,
     .partners-logos > img {
       flex: 0 1 160px;
@@ -195,7 +241,7 @@
     .partners-logos img {
       display: block;
       max-width: 100%;
-      max-height: 72px;
+      max-height: 104px;
       height: auto;
       margin: 0 auto;
       object-fit: contain;
@@ -300,6 +346,8 @@
       .hero-inner, .divider, .form-container { width: 92%; }
       .info-container { width: 92%; }
       .program-container { width: 92%; }
+      .map-container { width: 92%; }
+      #omradekart { scroll-margin-top: 120px; }
       .timeline { padding: 0; }
       .timeline::before { display: none; }
       .timeline-grid { display: grid; grid-template-columns: 1fr; gap: 0.75rem; }
@@ -311,8 +359,12 @@
       .partners-logos { justify-content: center; gap: 1rem; }
       .partners-logos > a,
       .partners-logos > img { flex-basis: calc((100% - 1rem) / 2); }
-      .partners-logos img { max-height: 56px; }
+      .partners-logos img { max-height: 72px; }
       #praktisk-info { scroll-margin-top: 120px; }
+
+      .exhibitors-container { width: 92%; }
+      .exhibitors-grid { flex-direction: column; }
+      #utstillere { scroll-margin-top: 120px; }
 
       .footer-wrapper {
         flex-direction: column;
@@ -383,6 +435,7 @@
       .partners-logos > img {
         flex-basis: calc((100% - (3 * 1rem)) / 4);
       }
+      .partners-logos img { max-height: 96px; }
     }
     
 
@@ -401,11 +454,11 @@
     <a href="#top" class="logo" aria-label="Jul på Tunet — til toppen"><img src="favicon.svg?v=6" alt="Jul på Tunet logo"></a>
     <button class="menu-toggle" aria-label="Åpne meny" aria-expanded="false" aria-controls="mobile-menu">☰</button>
     <div class="nav-links" id="mobile-menu">
-      <a href="#pamelding" class="deactivated">Påmelding</a>
+     <!-- <a href="#pamelding" class="deactivated">Påmelding</a> -->
       <a href="#program" class="active">Program</a>
-      <a>Områdekart</a>
+      <a href="#omradekart" class="active">Områdekart</a>
       <a href="#praktisk-info" class="active">Praktisk info</a>
-      <a>Liste over utstillere</a>
+    <!--  <a href="#utstillere" class="active">Liste over utstillere</a> -->
     </div>
   </nav>
 
@@ -470,35 +523,55 @@
     </div>
   </section>
   
+  <!--Områdekart-->
+  
+  <hr class="divider">
+  <section id="omradekart" class="map-container" aria-label="Områdekart">
+    <h2>Områdekart</h2>
+    <img src="Områdekart v3.jpg" alt="Festivalkart for Jul på Tunet – Bygdetunet og Teletunet">
+  </section>
+  
   <!--Praktisk info-->
   
   <hr class="divider">
   <section id="praktisk-info" class="info-container" aria-label="Praktisk info">
     <h2>Praktisk info</h2>
     <div class="info-grid">
-      <div class="info-item">
+
+      <!--Tid & sted-->
+
+      <div class="info-item" class="tid&sted">
         <h3>Tid og sted</h3>
         <p>13. - 14. desember 2025 · Fauske bygdetun & Teletunet</p>
         <ul>
-          <li>13. desember: 11:00 – 17:00</li>
-          <li>14. desember: 11:00 – 16:00</li>
+          <li>13. desember: 11:00 - 17:00</li>
+          <li>14. desember: 11:00 - 16:00</li>
         </ul>
       </div>
+
+      <!--Påmelding-->
+
       <div class="info-item">
         <h3>Påmelding</h3>
         <p>Alle som ønsker å stille under Jul på Tunet <strong>må</strong> bruke <a href="#pamelding">skjemaet</a> over. Påmeldingsfristen er <strong>15. november.</strong></p>
         <p>Påmeldingen er <strong>bindende.</strong> Interessenter som har meldt seg på før 6. nov blir kontaktet for å få bekreftet påmeldingen.</p>
       </div>
+
+      <!--Priser-->
+
       <div class="info-item" id="priser">
         <h3>Priser</h3>
         <ul>
           <li><strong>Foretak</strong> med omsetning over 1 mill. kr: <strong>2000 kr</strong></li>
           <li><strong>Foretak</strong> med omsetning under 1 mill. kr: <strong>1000 kr</strong></li>
           <li><strong>Foretak</strong> med omsetning under 50 000 kr: <strong>500 kr</strong></li>
-          <li>Ikke‑kommersielle virksomheter / veldedige organisasjoner: <strong>Gratis</strong></li>
+          <li>Ikke-kommersielle virksomheter / veldedige organisasjoner: <strong>Gratis</strong></li>
         </ul>
       </div>
-    <div class="info-item" id="Organisering">
+
+      <!--Organisering-->
+
+    <div class="info-item" id="organisering">
       <h3>Organisering</h3>
       <ul>
         <li>Påmeldte aktører plikter til å delta <strong>begge dager</strong> i åpningstiden.</li>
@@ -507,8 +580,97 @@
         <li>Arrangøren forbeholder seg retten til å avslå tilbydere som ikke passer inn konseptet Jul på Tunet, eventuelt også hvis vi får for mange tilbydere av samme produkt / tjeneste.</li>
       </ul>
       </div>
+
+      <!--Parkering
+
+      <div class="info-item" id="parkering">
+      <h3>Parkering</h3>
+      <ul>
+        <li>Det vil være mulig å parkere på <a href="https://maps.app.goo.gl/No6FDwmL7gh9A9LP7" target="_blank" rel="noopener">Gamle sentralskolen</a> & <a href="https://maps.app.goo.gl/EUpfVMCMw9NxUeUPA" target="_blank" rel="noopener">Rema 1000.</a></li>
+        <li>Husk å parker på en <strong>ordentlig</strong> måte slik at andres biler ikke blir innestengt.</li>
+        <li><strong><a href="https://maps.app.goo.gl/MhVQN8RKY6b5ua4n6" target="_blank" rel="noopener">Bobilparkeringen</a> er forbeholdt bobiler.</strong></li>
+      </ul>
+      </div>
+-->
+      <!--Hest & Slede
+
+      <div class="info-item" id="hest&slede">
+        <h3>Hest & slede</h3>
+        <ul>
+          <li>Hest & slede. vil være tilgengelig i tidsrommet 13:00 - 15:00.</li>
+          <li>Det er ikke lov å ferdes på stien hvor hest & sleden går. I krysset vil det stå en vakt som vil passe på at ingen passerende kommer i veien for hesten.</li>
+        </ul>
+      </div>
+
+      -->
     </div>
   </section>
+
+  <!--Utstillere-->
+<!--
+  <hr class="divider">
+  <section id="utstillere" class="exhibitors-container" aria-label="Liste over utstillere">
+    <h2>Liste over utstillere og arrangementer</h2>
+    <div class="exhibitors-grid">
+      <div class="exhibitor-col">
+        <h3>Bygdetunet</h3>
+        <ul class="exhibitor-list">
+          <li><span class="num">1</span><span class="name">Foldklang synger julen inn</span><span class="sep">-</span><span class="desc">Luciatog</span></li>
+          <li><span class="num">1</span><span class="name">Utekino</span><span class="sep">-</span><span class="desc">Jul i Flåklypa</span></li>
+          <li><span class="num">1</span><span class="name">Saltensambandet</span><span class="sep">-</span><span class="desc">Julesang rundt juletreet</span></li>
+          <li><span class="num">1</span><span class="name">Kommer nissen?</span><span class="sep"></span><span class="desc"></span></li>
+          <li><span class="num">2</span><span class="name">Kobberløpets barneskirenn</span><span class="sep"></span><span class="desc"></span></li>
+          <li><span class="num">3</span><span class="name">Fauske Kjøre- & Rideklubb</span><span class="sep">-</span><span class="desc">Hest & slede</span></li>
+          <li><span class="num">4</span><span class="name">Kobberløpets lavvo</span><span class="sep">-</span><span class="desc">Bålpanne, mat og varm drikke.</span></li>
+          <li><span class="num">5</span><span class="name">Nordlandsmuseet</span><span class="sep">-</span><span class="desc">Kafé</span></li>
+          <li><span class="num">5</span><span class="name">JEE Treprodukter</span><span class="sep">-</span><span class="desc">Salg av ulike treprodukter, skjærfjøler, serveringsbrett, rullpresser + mange andre treprodukter.</span></li>
+          <li><span class="num">6</span><span class="name">Ranberg mat og søm</span><span class="sep">-</span><span class="desc">Salg av reinskav med tilbehør, bålkaffe og hjemmeprodusert syproduker.</span></li>
+          <li><span class="num">6</span><span class="name">Lofotlefse AS</span><span class="sep">-</span><span class="desc">Salg av lefse, laks og blodpølse.</span></li>
+          <li><span class="num">7</span><span class="name">Flor gartneri AS</span><span class="sep">-</span><span class="desc">Salg av egenproduserte kranser av naturmateriale, hjemmelaget varm eplegløgg.</span></li>
+          <li><span class="num">7</span><span class="name">Tove Hansen</span><span class="sep">-</span><span class="desc">Salg av egenproduserte julenisser av høy kvalitet.</span></li>
+          <li><span class="num">7</span><span class="name">Atelier Fauske</span><span class="sep">-</span><span class="desc">Salg av kunstkalendere.</span></li>
+          <li><span class="num">8</span><span class="name">Nordlandsmuseet</span><span class="sep">-</span><span class="desc">Salg av ved.</span></li>
+          <li><span class="num">8</span><span class="name">Fauske kino</span><span class="sep">-</span><span class="desc">Salg av popcorn.</span></li>
+          <li><span class="num">8</span><span class="name">Polarsmak</span><span class="sep">-</span><span class="desc">Salg av spelsauskinn og hjerter og babyvotter av skinn.</span></li>
+          <li><span class="num">8</span><span class="name">Monicas Godteributikk</span><span class="sep">-</span><span class="desc">Salg av drops, karameller, hjemmelaget sjokolade, gaveposer/julebokser fylt med julegodter, hjemmelaget marsipan/marsipangriser og mye mer.</span></li>
+          <li><span class="num">8</span><span class="name">Beiarlefs med venner</span><span class="sep">-</span><span class="desc">Salg av lefser, flatbrød, ost, sennep med mer fra matnettverket ÆKTE</span></li>
+          <li><span class="num">8</span><span class="name">Hanssens Smak & Behag</span><span class="sep">-</span><span class="desc">Salg av lefser, flatbrød og hjemmebakst. </span></li>
+          <li><span class="num">9</span><span class="name">Nordlandsmuseet</span><span class="sep">-</span><span class="desc">Åpen kunstutstilling & butikk. (1. etg)</span></li>
+          <li><span class="num">9</span><span class="name">Kunstklubben9</span><span class="sep">-</span><span class="desc">Åpen kunstutstilling. (2. etg)</span></li>
+          <li><span class="num">9</span><span class="name">Skoglunds grønnsaker</span><span class="sep">-</span><span class="desc">Salg av potet.</span></li>
+          <li><span class="num">9</span><span class="name">Jan Sande</span><span class="sep">-</span><span class="desc">Salg av gulrot.</span></li>
+        </ul>
+      </div>
+      <div class="exhibitor-col">
+        <h3>Teletunet</h3>
+        <ul class="exhibitor-list">
+          <li><span class="num">10</span><span class="name">Fauske Husflidslag</span><span class="sep">-</span><span class="desc">Salg av husflidsprodukter. (2.etg)</span></li>
+          <li><span class="num">10</span><span class="name">Oddrun Eriksson - strikk</span><span class="sep">-</span><span class="desc">Salg av håndarbeid & strikking.</span></li>
+          <li><span class="num">10</span><span class="name">Toves aloe vera</span><span class="sep">-</span><span class="desc">Selge produkter basert på aloe vera.</span></li>
+          <li><span class="num">10</span><span class="name">KUKWA</span><span class="sep">-</span><span class="desc">Salg av håndlagde produkter og mer.</span></li>
+          <li><span class="num">11</span><span class="name">LHL Fauske</span><span class="sep">-</span><span class="desc">Kafédrift bl.a møsbrøm og salg av treprodukter.</span></li>
+          <li><span class="num">11</span><span class="name">Norsk Folkehjelp Fauske</span><span class="sep">-</span><span class="desc">Salg av popcorn og annet spiselig snacks.</span></li>
+          <li><span class="num">11</span><span class="name">Norsk Nasjonalforening (demensforeninga)</span><span class="sep">-</span><span class="desc">Informasjon</span></li>
+          <li><span class="num">11</span><span class="name">Sanitetskvinnene Fauske</span><span class="sep">-</span><span class="desc">Informasjon om organisasjonen, loddsalg & visning av beredskapskasse.</span></li>
+          <li><span class="num">11</span><span class="name">HumørQuilten</span><span class="sep">-</span><span class="desc">Salg av quiltet produkter.</span></li>
+          <li><span class="num">12</span><span class="name">Eirins eventyrkunst</span><span class="sep">-</span><span class="desc">Salg av malerier i akryl og noen kunstkort av egne motiv.</span></li>
+          <li><span class="num">12</span><span class="name">Rosehagens gull</span><span class="sep">-</span><span class="desc">Salg av egentprodusert honning.</span></li>
+          <li><span class="num">12</span><span class="name">Papirtulingan</span><span class="sep"></span><span class="desc"></span></li>
+          <li><span class="num">12</span><span class="name">Trine Rølvåg</span><span class="sep">-</span><span class="desc">Salg av julekuler og glass.</span></li>
+          <li><span class="num">12</span><span class="name">Anita Jacobsen malerier</span><span class="sep">-</span><span class="desc">Salg av egne maleri/ trykk, samt håndlagede julekort/ juleesker.</span></li>
+          <li><span class="num">12</span><span class="name">Bi’ bua</span><span class="sep">-</span><span class="desc">Salg av honning og bivokslys.</span></li>
+          <li><span class="num">12</span><span class="name">Anne Enge</span><span class="sep">-</span><span class="desc">Salg av malerier, strikke produkter og et par andre små ting.</span></li>
+          <li><span class="num">12</span><span class="name">Stian Røkenes Christensen AS</span><span class="sep">-</span><span class="desc">Salg av egenproduserte smykker.</span></li>
+          <li><span class="num">12</span><span class="name">Margareth Troli</span><span class="sep">-</span><span class="desc">Salg av glasskunst, sølv og keramikk.</span></li>
+          <li><span class="num">12</span><span class="name">Yngve Olsen AS</span><span class="sep">-</span><span class="desc">Salg av fiskeprodukter.</span></li>
+          <li><span class="num">13</span><span class="name">Løkta</span><span class="sep">-</span><span class="desc">Salg av tovete sitteunderlag, julekort/merkelapper, matter, tennbriketter, brente mandler, eplesmør og mye mer.</span></li>
+          <li><span class="num">14</span><span class="name">High North Alpaca</span><span class="sep">-</span><span class="desc">Alpaca.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+-->
+  <!--Samarbeidspartnere-->
   
   <hr class="divider">
   <section id="samarbeidspartnere" class="partners-container" aria-label="Samarbeidspartnere">
@@ -541,6 +703,21 @@
       <a href="https://www.visitfauske.no/" target="_blank" rel="noopener" aria-label="Visit Fauske (åpner i ny fane)">
         <img src="Visit Fauske_black_pos.png" alt="Visit Fauske – logo" loading="lazy" decoding="async">
       </a>
+      <a href="https://www.facebook.com/Saltensambandet/?locale=nb_NO" target="_blank" rel="noopener" aria-label="Saltensambandet (åpner i ny fane)">
+        <img src="saltensambandet.png" alt="Saltensambandet – logo" loading="lazy" decoding="async">
+      </a>
+      <a href="https://www.facebook.com/groups/332262358068/?locale=nb_NO" target="_blank" rel="noopener" aria-label="Foldklang (åpner i ny fane)">
+        <img src="foldklang.png" alt="Foldklang – logo" loading="lazy" decoding="async">
+      </a>
+      <a href="https://www.saltenposten.no/" target="_blank" rel="noopener" aria-label="Saltenposten (åpner i ny fane)">
+        <img src="Saltenposten 30.png" alt="Saltenposten – logo" loading="lazy" decoding="async">
+      </a>
+      <a href="https://www.facebook.com/proffteknikk/?locale=nb_NO" target="_blank" rel="noopener" aria-label="Proffteknikk (åpner i ny fane)">
+        <img src="proffteknikk.png" alt="Proffteknikk – logo" loading="lazy" decoding="async">
+      </a>
+      <a href="https://www.facebook.com/fauskekjoreogrideklubb/?locale=nb_NO" target="_blank" rel="noopener" aria-label="Fauske kjøre- og rideklubb (åpner i ny fane)">
+        <img src="fauske-kjøre-og-rideklubb.png" alt="Fauske kjøre- og rideklubb – logo" loading="lazy" decoding="async">
+      </a>
     </div>
   </section>
   
@@ -551,11 +728,11 @@
       <div class="footer-section">
         <h4>Lenker</h4>
         <nav class="footer-nav" aria-label="Bunnmeny">
-          <span class="disabled-link">Påmelding</span>
+          <!--<span class="disabled-link">Påmelding</span>-->
           <a href="#program">Program</a>
-          <span class="disabled-link">Områdekart</span>
+          <a href="#omradekart">Områdekart</a>
           <a href="#praktisk-info">Praktisk info</a>
-          <span class="disabled-link">Liste over utstillere</span>
+        <!--  <a href="#utstillere">Liste over utstillere</a> -->
         </nav>
       </div>
       <div class="footer-section">
