@@ -84,6 +84,23 @@
       height: 2px;
       background-color: var(--hvit);
     }
+    .nav-links .disabled-link {
+      color: var(--beige);
+      opacity: 0.5;
+      cursor: not-allowed;
+      position: relative;
+      font-weight: 500;
+      text-decoration: none;
+    }
+    .offseason-hidden { display: none !important; }
+    .thankyou {
+      width: 70%;
+      margin: 0 auto 2rem;
+      text-align: center;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      color: var(--gronn);
+      font-weight: bold;
+    }
     
     .menu-toggle {
       display: none;
@@ -455,10 +472,10 @@
     <button class="menu-toggle" aria-label="Åpne meny" aria-expanded="false" aria-controls="mobile-menu">☰</button>
     <div class="nav-links" id="mobile-menu">
      <!-- <a href="#pamelding" class="deactivated">Påmelding</a> -->
-      <a href="#program" class="active">Program</a>
-      <a href="#omradekart" class="active">Områdekart</a>
-      <a href="#praktisk-info" class="active">Praktisk info</a>
-      <a href="#utstillere" class="active">Liste over utstillere</a>
+      <span class="disabled-link">Program</span>
+      <span class="disabled-link">Områdekart</span>
+      <span class="disabled-link">Praktisk info</span>
+      <span class="disabled-link">Liste over utstillere</span>
     </div>
   </nav>
 
@@ -478,6 +495,7 @@
       <div class="hero-credit">Illustrasjonsbilde / AI-generert</div>
     </div>
   </section>
+  <div class="thankyou">Takk for i år.</div>
   
 <!--Påmelding-->
 <!--
@@ -494,8 +512,8 @@
   
   <!--Program-->
 
-  <hr class="divider">
-  <section id="program" class="program-container" aria-label="Program">
+  <hr class="divider offseason-hidden">
+  <section id="program" class="program-container offseason-hidden" aria-label="Program">
     <h2>Program</h2>
     <div class="day-block">
       <h3>Lørdag 13. desember</h3>
@@ -526,16 +544,16 @@
   
   <!--Områdekart-->
   
-  <hr class="divider">
-  <section id="omradekart" class="map-container" aria-label="Områdekart">
+  <hr class="divider offseason-hidden">
+  <section id="omradekart" class="map-container offseason-hidden" aria-label="Områdekart">
     <h2>Områdekart</h2>
     <img src="kart.jpg" alt="Festivalkart for Jul på Tunet – Bygdetunet og Teletunet">
   </section>
   
   <!--Praktisk info-->
   
-  <hr class="divider">
-  <section id="praktisk-info" class="info-container" aria-label="Praktisk info">
+  <hr class="divider offseason-hidden">
+  <section id="praktisk-info" class="info-container offseason-hidden" aria-label="Praktisk info">
     <h2>Praktisk info</h2>
     <div class="info-grid">
 
@@ -607,8 +625,8 @@
 
   <!--Utstillere-->
 
-  <hr class="divider">
-  <section id="utstillere" class="exhibitors-container" aria-label="Liste over utstillere">
+  <hr class="divider offseason-hidden">
+  <section id="utstillere" class="exhibitors-container offseason-hidden" aria-label="Liste over utstillere">
     <h2>Liste over utstillere og arrangementer</h2>
     <div class="exhibitors-grid">
       <div class="exhibitor-col">
@@ -759,11 +777,10 @@
       <div class="footer-section">
         <h4>Lenker</h4>
         <nav class="footer-nav" aria-label="Bunnmeny">
-          <!--<span class="disabled-link">Påmelding</span>-->
-          <a href="#program">Program</a>
-          <a href="#omradekart">Områdekart</a>
-          <a href="#praktisk-info">Praktisk info</a>
-          <a href="#utstillere">Liste over utstillere</a>
+          <span class="disabled-link">Program</span>
+          <span class="disabled-link">Områdekart</span>
+          <span class="disabled-link">Praktisk info</span>
+          <span class="disabled-link">Liste over utstillere</span>
         </nav>
       </div>
       <div class="footer-section">
