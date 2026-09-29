@@ -500,6 +500,17 @@
 </head>
 <body id="top">
 
+  <!-- Aktive seksjoner -->
+  <script>
+    const seksjonerApne = {
+      'pamelding': true,
+      'program': false,
+      'omradekart': false,
+      'praktisk-info': true,
+      'utstillere': false
+    };
+  </script>
+
   <!--NavBaren-->
 
   <nav class="navbar">
@@ -538,7 +549,7 @@
           </div>
         </div>
         <div class="hero-overlay">
-          <h1>Jul på Tunet | 13. - 14. desember 2025</h1>
+          <h1>Jul på Tunet | 28. - 29. november 2026</h1>
           <p>I fantastiske omgivelser arrangerer Salten Matfestival «Jul på Tunet». Arrangementet strekker seg over to dager i ett av Fauske sentrums flotteste områder – Bygdetunet og Teletunet. «Jul på Tunet» er et inkluderende julemarked med hovedfokus på lokalmat, håndverk, kunst og kultur, og skal sørge for den gode julestemningen i førjulstida.</p>
           <p>Ønsker du å være med på å skape årets koseligste julemarked?</p>
           <a href="#pamelding" class="cta-btn">Gå til påmelding</a>
@@ -565,7 +576,7 @@
   <section id="program" class="program-container" aria-label="Program">
     <h2>Program</h2>
     <div class="day-block">
-      <h3>Lørdag 13. desember</h3>
+      <h3>Lørdag 28. november</h3>
       <div class="timeline">
         <div class="timeline-grid">
           <div class="timeline-item"><div class="time">11:00</div><div class="tick"></div><div class="label">Åpning</div></div>
@@ -578,7 +589,7 @@
       </div>
     </div>
     <div class="day-block">
-      <h3>Søndag 14. desember</h3>
+      <h3>Søndag 29. november</h3>
       <div class="timeline">
         <div class="timeline-grid">
           <div class="timeline-item"><div class="time">11:00</div><div class="tick"></div><div class="label">Åpning</div></div>
@@ -610,10 +621,10 @@
 
       <div class="info-item" class="tid&sted">
         <h3>Tid og sted</h3>
-        <p>13. - 14. desember 2025 · Fauske bygdetun & Teletunet</p>
+        <p>28. - 29. november 2026 · Fauske bygdetun & Teletunet</p>
         <ul>
-          <li>13. desember: 11:00 - 17:00</li>
-          <li>14. desember: 11:00 - 16:00</li>
+          <li>28. november: 11:00 - 17:00</li>
+          <li>29. november: 11:00 - 16:00</li>
         </ul>
       </div>
 
@@ -621,8 +632,8 @@
 
       <div class="info-item">
         <h3>Påmelding</h3>
-        <p>Alle som ønsker å stille under Jul på Tunet <strong>må</strong> bruke <a href="#pamelding">skjemaet</a> over. Påmeldingsfristen er <strong>15. november.</strong></p>
-        <p>Påmeldingen er <strong>bindende.</strong> Interessenter som har meldt seg på før 6. nov blir kontaktet for å få bekreftet påmeldingen.</p>
+        <p>Alle som ønsker å stille under Jul på Tunet <strong>må</strong> bruke <a href="#pamelding">skjemaet</a> over. Påmeldingsfristen er <strong>6. november.</strong></p>
+        <p>Påmeldingen er <strong>bindende.</strong>
       </div>
 
       <!--Priser-->
@@ -633,7 +644,8 @@
           <li><strong>Foretak</strong> med omsetning over 1 mill. kr: <strong>2000 kr</strong></li>
           <li><strong>Foretak</strong> med omsetning under 1 mill. kr: <strong>1000 kr</strong></li>
           <li><strong>Foretak</strong> med omsetning under 50 000 kr: <strong>500 kr</strong></li>
-          <li>Ikke-kommersielle virksomheter / veldedige organisasjoner: <strong>Gratis</strong></li>
+          <li>Hobbyvirksomhet med omsetning under kr. 50 000 <strong>Gratis</strong></li>
+          <li>Eksisterende leietaker på Teletunet / Organisasjon <strong>Gratis</strong></li>
         </ul>
       </div>
 
@@ -734,15 +746,19 @@
           <li><span class="num">12</span><span class="name">By Smith-Hald</span><span class="sep">-</span><span class="desc">Salg av gelé og syltetøy.</span></li>
           <li><span class="num">12</span><span class="name">Yngve Olsen AS</span><span class="sep">-</span><span class="desc">Salg av fiskeprodukter.</span></li>
           <li><span class="num">13</span><span class="name">Løkta</span><span class="sep">-</span><span class="desc">Salg av tovete sitteunderlag, julekort/merkelapper, matter, tennbriketter, brente mandler, eplesmør og mye mer.</span></li>
-          <li><span class="num">13</span><span class="name">Kulturskolen</span><span class="sep">-</span><span class="desc">Kunstustilling (2.etg - 14:00 - 16:00 søndag 14. desember.)</span></li>
+          <li><span class="num">13</span><span class="name">Kulturskolen</span><span class="sep">-</span><span class="desc">Kunstustilling (2.etg - 14:00 - 16:00 søndag 29. november.)</span></li>
           <li><span class="num">14</span><span class="name">High North Alpaca</span><span class="sep">-</span><span class="desc">Salg av alpakkasåler og alpakkagarn.</span></li>
         </ul>
       </div>
     </div>
   </section>
 
+  <!--Mer info kommer snart (vises automatisk når alle seksjoner unntatt Påmelding og Praktisk info er satt til false)-->
+
+  <section id="mer-info-kommer" class="thankyou offseason-hidden">Mer info kommer snart</section>
+
   <!--Samarbeidspartnere-->
-  
+
   <hr class="divider">
   <section id="samarbeidspartnere" class="partners-container" aria-label="Samarbeidspartnere">
     <h2>Samarbeidspartnere</h2>
@@ -848,6 +864,49 @@
   <!--Script-->
   
   <script>
+    /* Seksjons-av/på basert på seksjonerApne (se toppen av body) */
+    (function() {
+      Object.keys(seksjonerApne).forEach(function(id) {
+        const apen = seksjonerApne[id];
+        const section = document.getElementById(id);
+        const links = document.querySelectorAll('a[href="#' + id + '"]');
+
+        if (section) {
+          section.classList.toggle('offseason-hidden', !apen);
+          const divider = section.previousElementSibling;
+          if (divider && divider.classList.contains('divider')) {
+            divider.classList.toggle('offseason-hidden', !apen);
+          }
+        }
+
+        links.forEach(function(link) {
+          link.classList.toggle('disabled-link', !apen);
+          if (!apen) {
+            link.setAttribute('aria-disabled', 'true');
+            link.setAttribute('tabindex', '-1');
+          } else {
+            link.removeAttribute('aria-disabled');
+            link.removeAttribute('tabindex');
+          }
+        });
+      });
+
+      document.addEventListener('click', function(e) {
+        const link = e.target.closest('a.disabled-link');
+        if (link) e.preventDefault();
+      });
+
+      /* "Mer info kommer snart" vises når alt unntatt Påmelding og Praktisk info er lukket.
+         Påmelding og Praktisk info holdes utenfor denne sjekken og påvirkes ikke. */
+      const alleAndreLukket = Object.keys(seksjonerApne)
+        .filter(function(id) { return id !== 'pamelding' && id !== 'praktisk-info'; })
+        .every(function(id) { return !seksjonerApne[id]; });
+      const merInfo = document.getElementById('mer-info-kommer');
+      if (merInfo) {
+        merInfo.classList.toggle('offseason-hidden', !alleAndreLukket);
+      }
+    })();
+
     /* Carousel */
     (function() {
       const track = document.getElementById('carouselTrack');
