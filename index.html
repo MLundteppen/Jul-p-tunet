@@ -400,10 +400,12 @@
       .program-container { width: 92%; }
       .map-container { width: 92%; }
       #omradekart { scroll-margin-top: 120px; }
-      .timeline { padding: 0; }
+      .timeline { padding: 0.5rem 0 0.25rem 0.5rem; }
       .timeline::before { display: none; }
-      .timeline-grid { display: grid; grid-template-columns: 1fr; gap: 0.75rem; }
-      .timeline-item { text-align: left; padding: 0.5rem 0.25rem; }
+      .timeline-grid { display: grid; grid-template-columns: 1fr; gap: 0.9rem; position: relative; padding-left: 1.5rem; }
+      .timeline-grid::before { content: ""; position: absolute; left: 0.45rem; top: 0.6rem; bottom: 0.6rem; width: 2px; background: var(--rod); opacity: 0.5; }
+      .timeline-item { text-align: left; padding: 0.25rem 0.25rem; }
+      .timeline-item::before { content: ""; position: absolute; left: calc(-1.5rem + 0.45rem + 1px - 9px); top: calc(0.25rem + 0.75rem - 1px); width: 18px; height: 2px; background: var(--rod); }
       .timeline-item .time { margin-bottom: 0.15rem; }
       .timeline-item .tick { display: none; }
       .partners-container { width: 92%; }
